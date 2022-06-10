@@ -1,0 +1,9 @@
+.container {
+  display: flex;
+}
+
+#game__container {
+  display: grid;
+  grid-template-columns: 100px 100px 100px;
+
+}

@@ -55,6 +55,7 @@ const displayController = (() => {
 
 // This will start the game
 const gameController = (() => {
+  console.log(webPageBody);
 
 })();
 

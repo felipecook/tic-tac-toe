@@ -1,7 +1,7 @@
 
 //The Module that holds the gameboard
 const gameBoard = (() => {
-  const gameBoardArray = ['x','x','o','o','x','x','x','o','o'];
+  const gameBoardArray = ['','','','','','','','',''];
   return {gameBoardArray};
 })();
 
@@ -29,9 +29,18 @@ const displayController = (() => {
   titleDiv.appendChild(gameTitle);
 
   //CREATE THE GAME ELEMENTS
+  const gameStartDiv = document.createElement('div');
+  gameStartDiv.classList.add('container');
+
   const gameDiv = document.createElement('div');
   gameDiv.classList.add('container');
   gameDiv.id = 'game__container';
+
+  //Start game button
+  const startGameButton = document.createElement('button');
+  startGameButton.id = 'startGameButton';
+  startGameButton.innerHTML = 'START';
+  gameStartDiv.appendChild(startGameButton);
   
   //Game Holder
   for (let index = 0; index < gameBoardSlots.length; index++) {
@@ -39,6 +48,7 @@ const displayController = (() => {
     console.log(gameBoardElement);
     let tttButton = document.createElement('button');
     tttButton.id = `tttButton${index}`;
+    tttButton.classList = 'tttButtons'
     tttButton.innerHTML = gameBoardElement;
     gameDiv.appendChild(tttButton);
   }
@@ -47,17 +57,31 @@ const displayController = (() => {
 
   //Attach the title and game body to the webPageBody
   webPageBody.appendChild(titleDiv);
+  webPageBody.appendChild(gameStartDiv);
   webPageBody.appendChild(gameDiv);
 
-  return {webPageBody};
+  return {webPageBody, startGameButton};
 })();
 
 
 // This will start the game
 const gameController = (() => {
-  console.log(webPageBody);
+  startGameButton = displayController.startGameButton;
+  startGameButton.addEventListener('click', startGame)
+
+  const gameWon = false;
+
+  tttButtons = document.querySelectorAll('.tttButtons');
+  
+  function startGame() {
+    do {
+      tttButtons.addEventListener('click', displayXO);
+    } while (!gameWon);
+
+  };
 
 })();
+
 
 
 

@@ -72,13 +72,23 @@ const gameController = (() => {
   const gameWon = false;
 
   tttButtons = document.querySelectorAll('.tttButtons');
+
+  tttButtons.forEach(tttButton => {
+    tttButton.addEventListener('click', displayXO);
+  });
+
   
   function startGame() {
     do {
-      tttButtons.addEventListener('click', displayXO);
+      
     } while (!gameWon);
 
   };
+
+  function displayXO() {
+    console.log('Hi');
+  };
+
 
 })();
 

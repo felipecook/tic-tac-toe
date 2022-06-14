@@ -63,7 +63,7 @@ const displayController = (() => {
   webPageBody.appendChild(gameStartDiv);
   webPageBody.appendChild(gameDiv);
 
-  return {webPageBody, startGameButton};
+  return {webPageBody, startGameButton, gameBoardSlots};
 })();
 
 
@@ -86,11 +86,12 @@ const gameController = (() => {
     tttButton.addEventListener('click', displayXO);
   });
 
-  
+  let gameBoard = displayController.gameBoardSlots;
+  console.log(gameBoard);
   function startGame() {
-    if (player1Turn == true){
-
-    }
+    do {
+      
+    } while (!gameWon);
 
   };
 

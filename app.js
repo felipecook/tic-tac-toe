@@ -6,10 +6,12 @@ const gameBoard = (() => {
 })();
 
 // The Factory Function that holds information on the player
-const player = name => {
+const player = (name, player) => {
   const getName = () => name;
-  return {getName};
-}
+  const getPlayer = () => player;
+  
+  return {getName, getPlayer};
+};
 
 //This will control the display of the gameboard
 const displayController = (() => {
@@ -68,6 +70,10 @@ const displayController = (() => {
 const gameController = (() => {
   startGameButton = displayController.startGameButton;
   startGameButton.addEventListener('click', startGame)
+  player1 = player('felipe', 'player1');
+  player2 = player('charlie', 'player2');
+  console.log(player1.getPlayer());
+  console.log(player2.getPlayer());
 
   const gameWon = false;
 
@@ -80,13 +86,20 @@ const gameController = (() => {
   
   function startGame() {
     do {
+
       
     } while (!gameWon);
 
   };
 
   function displayXO() {
-    console.log('Hi');
+    if (player1or2){
+      this.innerHTML = 'x';
+    } else {
+      this.innerHTML = 'o';
+    }
+    
+    
   };
 
 

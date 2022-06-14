@@ -6,11 +6,12 @@ const gameBoard = (() => {
 })();
 
 // The Factory Function that holds information on the player
-const player = (name, player) => {
+const player = (name, player, turn) => {
   const getName = () => name;
   const getPlayer = () => player;
+  const myTurn = () => turn;
   
-  return {getName, getPlayer};
+  return {getName, getPlayer, myTurn};
 };
 
 //This will control the display of the gameboard
@@ -70,9 +71,11 @@ const displayController = (() => {
 const gameController = (() => {
   startGameButton = displayController.startGameButton;
   startGameButton.addEventListener('click', startGame)
-  player1 = player('felipe', 'player1');
-  player2 = player('charlie', 'player2');
-  console.log(player1.getPlayer());
+  const player1 = player('felipe', 'player1');
+  const player2 = player('charlie', 'player2');
+  let player1Turn = true;
+  console.log(player1.myTurn());
+  
   console.log(player2.getPlayer());
 
   const gameWon = false;
@@ -85,15 +88,14 @@ const gameController = (() => {
 
   
   function startGame() {
-    do {
+    if (player1.myTurn() == true){
 
-      
-    } while (!gameWon);
+    }
 
   };
 
   function displayXO() {
-    if (player1or2){
+    if (pla){
       this.innerHTML = 'x';
     } else {
       this.innerHTML = 'o';

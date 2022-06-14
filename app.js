@@ -71,9 +71,9 @@ const displayController = (() => {
 const gameController = (() => {
   startGameButton = displayController.startGameButton;
   startGameButton.addEventListener('click', startGame)
-  const player1 = player('felipe', 'player1');
-  const player2 = player('charlie', 'player2');
-  let player1Turn = true;
+  const player1 = player('felipe', 'player1', true);
+  const player2 = player('charlie', 'player2', false);
+  let player1Turn = false;
   console.log(player1.myTurn());
   
   console.log(player2.getPlayer());
@@ -88,14 +88,14 @@ const gameController = (() => {
 
   
   function startGame() {
-    if (player1.myTurn() == true){
+    if (player1Turn == true){
 
     }
 
   };
 
   function displayXO() {
-    if (pla){
+    if (player1.myTurn() == true){
       this.innerHTML = 'x';
     } else {
       this.innerHTML = 'o';

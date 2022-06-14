@@ -11,7 +11,7 @@ const player = (name, player, turn) => {
   const getPlayer = () => player;
   const myTurn = () => turn;
   
-  return {getName, getPlayer, myTurn};
+  return {getName, getPlayer, myTurn, setTurn (turn) {turn}};
 };
 
 //This will control the display of the gameboard
@@ -73,7 +73,7 @@ const gameController = (() => {
   startGameButton.addEventListener('click', startGame)
   const player1 = player('felipe', 'player1', true);
   const player2 = player('charlie', 'player2', false);
-  let player1Turn = false;
+  let player1Turn = true;
   console.log(player1.myTurn());
   
   console.log(player2.getPlayer());
@@ -95,10 +95,13 @@ const gameController = (() => {
   };
 
   function displayXO() {
-    if (player1.myTurn() == true){
+    if (player1Turn == true){
       this.innerHTML = 'x';
+      player1Turn = false;
+      //player1.myTurn 
     } else {
       this.innerHTML = 'o';
+      player1Turn = true;
     }
     
     

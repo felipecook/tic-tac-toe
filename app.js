@@ -90,8 +90,13 @@ const gameController = (() => {
   console.log(gameBoard);
   function startGame() {
     do {
-      
+      console.log(gameBoard);
     } while (!gameWon);
+
+  };
+
+  function didWinOccur() {
+    console.log(gameBoard);
 
   };
 
@@ -99,10 +104,12 @@ const gameController = (() => {
     if (player1Turn == true){
       this.innerHTML = 'x';
       player1Turn = false;
+      didWinOccur();
       //player1.myTurn 
     } else {
       this.innerHTML = 'o';
       player1Turn = true;
+      didWinOccur();
     }
     
     
